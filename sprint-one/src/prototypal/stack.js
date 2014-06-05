@@ -1,7 +1,8 @@
+// will return an object with a prototype stackMethods
 var makeStack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  var stack = Object.create(stackMethods);
+  var stack = Object.create(stackMethods); // creates a new obj stack that delegates to stackMethods
   stack.size_count = 0;
   stack.storage = {};
   return stack;
