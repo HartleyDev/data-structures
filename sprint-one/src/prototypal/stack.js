@@ -24,3 +24,4 @@ var stackMethods = {
     return this.size_count;
   }
 };
+
