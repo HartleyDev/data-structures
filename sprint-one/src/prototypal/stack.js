@@ -9,15 +9,18 @@ var makeStack = function() {
 
 var stackMethods = {
   push : function(value) {
-
+    this.storage[this.size_count] = value;
+    this.size_count++;
   },
   pop : function() {
-
+    if ( this.size_count > 0 ) {
+      this.size_count--;
+      var result = this.storage[this.size_count];
+      delete this.storage[this.size_count];
+      return result;
+    }
   },
   size : function() {
     return this.size_count;
   }
 };
-
-
-var myStack = makeStack.create();
