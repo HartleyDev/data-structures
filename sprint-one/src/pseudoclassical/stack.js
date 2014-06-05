@@ -1,3 +1,4 @@
+// Stack will be instantiated via   var newStack = new Stack();
 var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
@@ -5,6 +6,8 @@ var Stack = function() {
   this._storage = {};
 };
 
+// not sure why this pattern would be used
+// it does not actually modify the prototype
 Stack.prototype.size = function(){
   return this._size;
 };
