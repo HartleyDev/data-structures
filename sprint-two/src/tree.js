@@ -5,17 +5,15 @@ var makeTree = function(value){
   return newTree;
 };
 
-
-
-
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
-    this.children.push(makeTree(value));
-
+  // TC = constant
+  this.children.push(makeTree(value));
 };
 
 treeMethods.contains = function(target){
+  // TC = linear      (binary tree is logarithmic)
   var result = false;
   var search = function(child){
     if(child.value === target){

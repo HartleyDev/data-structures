@@ -1,9 +1,20 @@
+var makeNode = function(value){
+  // time complexity = constant
+  var node = {};
+
+  node.value = value;
+  node.next = null;
+
+  return node;
+};
+
 var makeLinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
 
   list.addToTail = function(value){
+    // time complexity = constant
     var newnode = makeNode(value);
     if (list.head === null) {
       list.head = newnode;
@@ -16,6 +27,7 @@ var makeLinkedList = function(){
   };
 
   list.removeHead = function() {
+    // time complexity = constant
     if (list.head !== null) {
       var result = list.head;
       delete list.head;
@@ -25,6 +37,7 @@ var makeLinkedList = function(){
   };
 
   list.contains = function(target){
+    // time complexity = linear
     var result = false;
     var nextnode = function(node) {
       if ( node && node.value === target ) {
@@ -38,15 +51,6 @@ var makeLinkedList = function(){
   };
 
   return list;
-};
-
-var makeNode = function(value){
-  var node = {};
-
-  node.value = value;
-  node.next = null;
-
-  return node;
 };
 
 /*

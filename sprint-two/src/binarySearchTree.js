@@ -9,6 +9,7 @@ var makeBinarySearchTree = function(value){
 var treeMethods = {};
 
 treeMethods.insert = function(value) {
+  // TC = logarithmic
   var dive = function(node) {
     if (value < node.value) {
       if (!node.left) {
@@ -28,6 +29,7 @@ treeMethods.insert = function(value) {
 };
 
 treeMethods.contains = function(value) {
+  // TC = logarithmic
   var result = false;
   var checknodes = function(node) {
     if (node.value === value) {
@@ -43,6 +45,7 @@ treeMethods.contains = function(value) {
 };
 
 treeMethods.depthFirstLog = function(fun) {
+  // TC = linear     *must go to all nodes
   var allnodes = function(node) {
     fun(node.value);
     if (node.left) {
