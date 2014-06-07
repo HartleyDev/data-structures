@@ -29,13 +29,20 @@ Graph.prototype.getEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.addEdge = function(fromNode, toNode){
-  this.node[fromNode][toNode] = toNode;
-  this.node[toNode][fromNode] = fromNode;
+  this.nodes[fromNode][toNode] = toNode;
+  this.nodes[toNode][fromNode] = fromNode;
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
   delete this.nodes[fromNode][toNode];
+  if(Object.keys(this.nodes[fromNode]).length < 1){
+    delete this.nodes[fromNode];
+  }
+
   delete this.nodes[toNode][fromNode];
+  if(Object.keys(this.nodes[toNode]).length < 1){
+    delete this.nodes[toNode];
+  }
 };
 
 /*
