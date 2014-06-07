@@ -17,6 +17,7 @@ Graph.prototype.getEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.addEdge = function(fromNode, toNode){
+
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){

@@ -7,35 +7,36 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  if(this._storage.get(i)){
-    if (Array.isArray(this._storage[i])) {
-      this._storage[i].push([k,v]);
-    } else {
-      var og = this._storage.get(i);
-      this._storage[i] = [];
-      this._storage[i].push(og);
-      this._storage[i].push([k,v]);
+  if (this._storage.get(i) === undefined) {
+    this._storage.set(i, [[k,v]]);
+  } else {
+    for (var j = 0 ; j < this._storage.get(i).length ; j++) {
+      if (this._storage.get(i)[j][0] === k) {
+        this._storage.set(i)[j][1] = v;
+        return;
+      }
     }
-  }else {
-    this._storage.set(i,v);
+    this._storage.get(i).push([k,v]);
   }
 };
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  if (Array.isArray(this._storage[i])) {
-    for (var j = 0; j<this._storage[i].length ; j++) {
-      if (this._storage[i][j][0] === k) {
-        return this._storage[i][j][0];
-      }
+  for (var r = 0; r<this._storage.get(i).length ; r++) {
+    if (this._storage.get(i)[r][0] === k) {
+      return this._storage.get(i)[r][1];
     }
   }
-  return this._storage.get(i);
+  return null;
 };
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.set(i, null);
+  for (var j = 0 ; j < this._storage.get(i).length ; j++) {
+    if (this._storage.get(i)[j][0] === k) {
+      this._storage.get(i).splice(j, 1);
+    }
+  }
 };
 
 // this works, but separate chaining only handles a load factor of 2
